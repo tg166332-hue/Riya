@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffdae8">
+<title>Happy Birthday, Riya! 💖</title>
+<style>
+:root{--pink:#ff5f9e;--deep:#9e356e;--cream:#fff8fb;--ink:#542846}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:linear-gradient(160deg,#fff8fb,#ffe1ee 48%,#f5e4ff);overflow-x:hidden}
+main{max-width:760px;margin:auto;padding:22px 16px 60px}
+.hero{min-height:86vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative}
+.pill{background:#fff9;border:1px solid #fff;padding:8px 15px;border-radius:99px;font-size:.88rem;letter-spacing:.06em}
+h1{font-size:clamp(2.6rem,12vw,5.5rem);line-height:1.02;margin:20px 0 12px;color:var(--deep);font-family:Georgia,serif}
+h1 span{color:var(--pink);display:block}
+.sub{font-size:1.08rem;max-width:460px;line-height:1.65}
+button{font:inherit;border:0;border-radius:999px;padding:14px 22px;background:var(--pink);color:white;font-weight:750;box-shadow:0 9px 24px #d94b8a38;cursor:pointer}
+button:focus-visible{outline:3px solid var(--deep);outline-offset:4px}
+.buttons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.secondary{background:white;color:var(--deep);border:1px solid #f5bad4}
+.cake{font-size:4rem;margin:14px 0 2px;filter:drop-shadow(0 8px 9px #b85a7c25)}
+.card{background:#ffffffc9;border:1px solid #fff;border-radius:28px;padding:clamp(20px,5vw,34px);margin:18px 0;box-shadow:0 14px 45px #8f477015;backdrop-filter:blur(8px)}
+h2{font-family:Georgia,serif;font-size:clamp(1.7rem,6vw,2.5rem);color:var(--deep);text-align:center;margin:0 0 14px}
+.message{text-align:center;font-size:1.08rem;line-height:1.9}
+.signature{font-family:Georgia,serif;font-style:italic;font-size:1.4rem;color:var(--pink);text-align:center;margin-top:18px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.photo{aspect-ratio:3/4;border-radius:18px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;background:linear-gradient(145deg,#ffd1e4,#f1d9ff);border:2px dashed #eaa5c7;color:#8c4770;font-size:.9rem}
+.photo:nth-child(2){background:linear-gradient(145deg,#ffe9bb,#ffd5e9)}
+.photo:nth-child(3){background:linear-gradient(145deg,#dcd7ff,#ffcfe7)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hint{text-align:center;font-size:.88rem;line-height:1.6;opacity:.8;margin:12px 0 0}
+#hiddenWish{display:none}
+#hiddenWish.show{display:block;animation:pop .6s ease both}
+footer{text-align:center;font-size:.9rem;padding:20px 0;opacity:.8}
+.heart{position:fixed;bottom:-35px;pointer-events:none;z-index:10;animation:floatUp linear forwards}
+@keyframes floatUp{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:430px){.gallery{gap:7px}.photo{font-size:.76rem;border-radius:13px}.card{border-radius:22px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+  <div class="pill">✨ A LITTLE SURPRISE FOR SOMEONE SPECIAL ✨</div>
+  <div class="cake" aria-hidden="true">🎂</div>
+  <h1>Happy Birthday,<span>Riya! 💗</span></h1>
+  <p class="sub">A little page, a lot of love, and a whole lot of birthday magic — made just for you.</p>
+  <div class="buttons">
+    <button id="openBtn">Open your surprise 💌</button>
+    <button class="secondary" id="musicBtn">♫ Play birthday tune</button>
+  </div>
+  <p class="hint">Turn your sound on for a tiny birthday melody.</p>
+</section>
+
+<section class="card" id="hiddenWish">
+  <h2>To my favourite human 🌷</h2>
+  <p class="message">Happy Birthday, Riya! 🥳💖<br><br>
+  I hope your day is filled with laughter, lovely surprises, yummy cake, and all the happiness you deserve. Thank you for being such a wonderful friend and for making ordinary days feel special.<br><br>
+  May this new year of your life bring you beautiful memories, big smiles, exciting adventures, and dreams that come true. Keep being your amazing self — the world is brighter with you in it! 💕</p>
+  <div class="signature">Lots of love, your best friend 💗</div>
+</section>
+
+<section class="card">
+  <h2>Little memory corner 📸</h2>
+  <div class="gallery">
+    <label class="photo" id="slot1">🌸<br>Our favourite memory<input aria-label="Choose first photo" type="file" accept="image/*" hidden onchange="previewPhoto(event,1)"></label>
+    <label class="photo" id="slot2">🫶<br>Best-friend moments<input aria-label="Choose second photo" type="file" accept="image/*" hidden onchange="previewPhoto(event,2)"></label>
+    <label class="photo" id="slot3">🎀<br>Always a team<input aria-label="Choose third photo" type="file" accept="image/*" hidden onchange="previewPhoto(event,3)"></label>
+  </div>
+  <p class="hint">Tap each card to preview a photo on your phone. To make photos appear for Riya online too, upload them with the website files and use their filenames in the HTML.</p>
+</section>
+
+<section class="card">
+  <h2>Birthday wishes for you 🎁</h2>
+  <p class="message">More joy. More adventures. More cake. More reasons to smile. And a year full of people who remind you how special you are. 🌈✨</p>
+  <p class="message">Today is all about YOU, Riya. Have the happiest birthday ever! 🎉</p>
+</section>
+<footer>Made with 💖 just for Riya · Keep shining!</footer>
+</main>
+<script>
+const openBtn=document.getElementById('openBtn');
+openBtn.addEventListener('click',()=>{
+ const wish=document.getElementById('hiddenWish');
+ wish.classList.add('show');
+ wish.scrollIntoView({behavior:'smooth',block:'center'});
+ for(let i=0;i<22;i++) setTimeout(makeHeart,i*90);
+ openBtn.textContent='Surprise opened! 💖';
+});
+function makeHeart(){
+ const el=document.createElement('div');el.className='heart';
+ el.textContent=['💗','💕','💖','✨','🌸'][Math.floor(Math.random()*5)];
+ el.style.left=Math.random()*100+'vw';el.style.fontSize=(16+Math.random()*20)+'px';
+ el.style.animationDuration=(3+Math.random()*3)+'s';
+ document.body.appendChild(el);setTimeout(()=>el.remove(),6500);
+}
+function previewPhoto(event,n){
+ const file=event.target.files&&event.target.files[0];if(!file)return;
+ const reader=new FileReader();reader.onload=()=>{
+  const slot=document.getElementById('slot'+n);slot.innerHTML='';
+  const img=document.createElement('img');img.alt='Selected memory photo';img.src=reader.result;
+  slot.appendChild(img);
+  const input=document.createElement('input');input.type='file';input.accept='image/*';input.hidden=true;input.setAttribute('aria-label','Change photo '+n);input.onchange=e=>previewPhoto(e,n);slot.appendChild(input);
+ };reader.readAsDataURL(file);
+}
+// A tiny original melody made in the browser; no external audio file required.
+let audioCtx=null, musicTimer=null, noteIndex=0;
+const notes=[523.25,523.25,587.33,523.25,698.46,659.25,523.25,523.25,587.33,523.25,783.99,698.46];
+function playNote(){
+ if(!audioCtx)return;
+ const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+ osc.type='sine';osc.frequency.value=notes[noteIndex%notes.length];
+ gain.gain.setValueAtTime(0.0001,audioCtx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(0.13,audioCtx.currentTime+.03);
+ gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+.32);
+ osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+.34);
+ noteIndex++;
+}
+const musicBtn=document.getElementById('musicBtn');
+musicBtn.addEventListener('click',async()=>{
+ if(musicTimer){clearInterval(musicTimer);musicTimer=null;musicBtn.textContent='♫ Play birthday tune';return}
+ const AC=window.AudioContext||window.webkitAudioContext;
+ if(!AC){musicBtn.textContent='Music unavailable in this browser';return}
+ audioCtx=audioCtx||new AC();if(audioCtx.state==='suspended')await audioCtx.resume();
+ playNote();musicTimer=setInterval(playNote,390);musicBtn.textContent='Ⅱ Stop birthday tune';
+});
+</script>
+</body>
+</html>
