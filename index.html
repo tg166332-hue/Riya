@@ -125,27 +125,28 @@ function previewPhoto(event,n){
   const input=document.createElement('input');input.type='file';input.accept='image/*';input.hidden=true;input.setAttribute('aria-label','Change photo '+n);input.onchange=e=>previewPhoto(e,n);slot.appendChild(input);
  };reader.readAsDataURL(file);
 }
-// A tiny original melody made in the browser; no external audio file required.
-let audioCtx=null, musicTimer=null, noteIndex=0;
-const notes=[523.25,523.25,587.33,523.25,698.46,659.25,523.25,523.25,587.33,523.25,783.99,698.46];
-function playNote(){
- if(!audioCtx)return;
- const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
- osc.type='sine';osc.frequency.value=notes[noteIndex%notes.length];
- gain.gain.setValueAtTime(0.0001,audioCtx.currentTime);
- gain.gain.exponentialRampToValueAtTime(0.13,audioCtx.currentTime+.03);
- gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+.32);
- osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+.34);
- noteIndex++;
-}
-const musicBtn=document.getElementById('musicBtn');
-musicBtn.addEventListener('click',async()=>{
- if(musicTimer){clearInterval(musicTimer);musicTimer=null;musicBtn.textContent='♫ Play birthday tune';return}
- const AC=window.AudioContext||window.webkitAudioContext;
- if(!AC){musicBtn.textContent='Music unavailable in this browser';return}
- audioCtx=audioCtx||new AC();if(audioCtx.state==='suspended')await audioCtx.resume();
- playNote();musicTimer=setInterval(playNote,390);musicBtn.textContent='Ⅱ Stop birthday tune';
+
+// New birthday song
+const birthdayAudio = new Audio("Happy Birthday To You Ji Krsna Solo 128 Kbps.mp3");
+birthdayAudio.loop = true;
+
+const musicBtn = document.getElementById('musicBtn');
+
+musicBtn.addEventListener('click', async () => {
+  if (birthdayAudio.paused) {
+    try {
+      await birthdayAudio.play();
+      musicBtn.textContent = '⏸ Stop birthday tune';
+    } catch (error) {
+      musicBtn.textContent = '🎵 Play birthday tune';
+    }
+  } else {
+    birthdayAudio.pause();
+    birthdayAudio.currentTime = 0;
+    musicBtn.textContent = '♫ Play birthday tune';
+  }
 });
+  
 </script>
 </body>
 </html>
